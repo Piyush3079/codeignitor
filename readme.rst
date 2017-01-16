@@ -26,7 +26,7 @@ Requirements
 ******************
 
 Requirements of the application. 
-`_Codeigniter 3<https://www.codeigniter.com/download>`.
+_`Codeigniter 3<https://www.codeigniter.com/download>`.
 php 5.6 or newer.
 
 
@@ -36,5 +36,5 @@ Installation
 
 Please see the `installation section <https://codeigniter.com/user_guide/installation/index.html>`_
 of the CodeIgniter User Guide.
-`_User Guide <https://codeigniter.com/docs>`
+_`User Guide <https://codeigniter.com/docs>`
 Add your facebook and google plus security key to make login with facebook or googlr plus working.
