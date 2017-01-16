@@ -1,22 +1,33 @@
 ###################
-What is CodeIgniter
+Profile-based Application
 ###################
 
-CodeIgniter is an Application Development Framework - a toolkit - for people
-who build web sites using PHP. Its goal is to enable you to develop projects
-much faster than you could if you were writing code from scratch, by providing
-a rich set of libraries for commonly needed tasks, as well as a simple
-interface and logical structure to access these libraries. CodeIgniter lets
-you creatively focus on your project by minimizing the amount of code needed
-for a given task.
+This application is based on php 5.7 and codeigniter 3.x.
+
+******************
+What this application is about?
+******************
+
+This application is a profile based system which has a login sign-up page. The login
+sign-up currently includes login or signup with facebook or google plus. This application 
+also has a friend request system in which you can send or accept connection request. You
+can also block certain user. 
 
 *******************
-Release Information
+The BLOG
 *******************
 
-This repo contains in-development code for future releases. To download the
-latest stable release please visit the `CodeIgniter Downloads
-<https://codeigniter.com/download>`_ page.
+This application also has a blog in which you can see your blogs and blogs written by others.
+You can also like or comment on the bogs written by you and also see who liked or commented
+on blogs written by you.
+
+******************
+Requirements
+******************
+
+Requirements of the application
+Codeigniter 3`<https://www.codeigniter.com/download>`.
+<https://www.codeigniter.com/download>`_ page.
 
 **************************
 Changelog and New Features
