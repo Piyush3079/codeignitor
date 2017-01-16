@@ -1,0 +1,59 @@
+$(function(){
+	console.log("Hi developer.");
+	console.log("Welcome to the SISystem Console Panel.");
+	//alert("Piyush");
+	$(".ul-name1").click(function(){
+		$(".list-name2").removeClass("active-li");
+		$(".list-name3").removeClass("active-li");
+		$(".list-name4").removeClass("active-li");
+		$(".list-name5").removeClass("active-li");
+		$(".list-name6").removeClass("active-li");
+		$(".list-name1").addClass("active-li");
+	});
+	$(".ul-name2").click(function(){
+		$(".list-name1").removeClass("active-li");
+		$(".list-name3").removeClass("active-li");
+		$(".list-name4").removeClass("active-li");
+		$(".list-name5").removeClass("active-li");
+		$(".list-name6").removeClass("active-li");
+		$(".list-name2").addClass("active-li");
+	});
+	$(".ul-name3").click(function(){
+		$(".list-name1").removeClass("active-li");
+		$(".list-name2").removeClass("active-li");
+		$(".list-name4").removeClass("active-li");
+		$(".list-name5").removeClass("active-li");
+		$(".list-name6").removeClass("active-li");
+		$(".list-name3").addClass("active-li");
+	});
+	$(".ul-name4").click(function(){
+		$(".list-name1").removeClass("active-li");
+		$(".list-name2").removeClass("active-li");
+		$(".list-name3").removeClass("active-li");
+		$(".list-name5").removeClass("active-li");
+		$(".list-name6").removeClass("active-li");
+		$(".list-name4").addClass("active-li");
+	});
+	$(".ul-name5").click(function(){
+		$(".list-name1").removeClass("active-li");
+		$(".list-name2").removeClass("active-li");
+		$(".list-name3").removeClass("active-li");
+		$(".list-name4").removeClass("active-li");
+		$(".list-name6").removeClass("active-li");
+		$(".list-name5").addClass("active-li");
+	});
+	$(".ul-name6").click(function(){
+		$(".list-name1").removeClass("active-li");
+		$(".list-name2").removeClass("active-li");
+		$(".list-name3").removeClass("active-li");
+		$(".list-name4").removeClass("active-li");
+		$(".list-name5").removeClass("active-li");
+		$(".list-name6").addClass("active-li");
+	});
+	$(".img-div").mouseover(function(){
+		$("#figcaption1").css("display", "block");
+	});
+	$(".img-div").mouseleave(function(){
+		$("#figcaption1").css("display", "none");
+	});
+});
