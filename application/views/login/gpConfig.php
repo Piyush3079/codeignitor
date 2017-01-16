@@ -9,9 +9,9 @@ include_once 'src/contrib/Google_Oauth2Service.php';
 /*
  * Configuration and setup Google API
  */
-$clientId = ''; //Google client ID
-$clientSecret = ''; //Google client secret
-$redirectURL = ''; //Callback URL
+$clientId = '644383037280-bb4j7jnlj4la54i695bd4lte7c25ba2f.apps.googleusercontent.com'; //Google client ID
+$clientSecret = 'xkuoaUnSKDkhRnfMQBCdPC1q'; //Google client secret
+$redirectURL = 'http://localhost/Project/'; //Callback URL
 
 //Call Google API
 $gClient = new Google_Client();
