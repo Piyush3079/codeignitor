@@ -205,9 +205,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			$submit = $this->input->post('submit');
 			if(isset($submit)){
 				$this->load->library('form_validation');
-					/*$this->form_validation->set_rules('firstname', 'First Name', 'trim|required|alpha|min_length[2]');
+				$oauth_uid = $this->session->userdata('oauth_uid');
+				if($oauth_uid){
+					//some action
+				}
+				else{
+					$this->form_validation->set_rules('firstname', 'First Name', 'trim|required|alpha|min_length[2]');
 					$this->form_validation->set_rules('lastname', 'Last Name', 'trim|required|alpha|min_length[3]');
-					$this->form_validation->set_rules('email','Email', 'trim|required|valid_email');*/
+					$this->form_validation->set_rules('email','Email', 'trim|required|valid_email');
+				}
 				$this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[6]');
 				$this->form_validation->set_rules('confirm_password', 'Confirm Password', 'trim|required|min_length[6]|matches[password]');
 				$this->form_validation->set_rules('gender', 'Gender', 'trim|required|alpha|min_length[3]');
@@ -238,14 +244,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 										'college' => $collage_name,
 										'status' => 1,
 										'identity' => md5(uniqid($salt, true)));
-							echo '1';
-							echo $date_success['success'] = $this->Login_model->create_new_user($data);
-							/*if($date_success['success'] == false){
+							//echo '1';
+							$date_success['success'] = $this->Login_model->create_new_user($data);
+							if($date_success['success'] == false){
 								redirect('/');
 							}
 							else{
 								redirect('home/');
-							}*/
+							}
 						}
 						else{
 							$firstname = $this->input->post('firstname');
@@ -267,14 +273,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 										'dob' => $day.' '.$month.' '.$year,
 										'college' => $collage_name,
 										'status' => 1);
-							echo $date_success['success'] = $this->Login_model->create_new_user($data);
-							echo "20";
-							/*if($date_success['success'] == false){
+							$date_success['success'] = $this->Login_model->create_new_user($data);
+							//echo "20";
+							if($date_success['success'] == false){
 								redirect('/');
 							}
 							else{
 								redirect('home/');
-							}*/
+							}
 						}
 				}
 				else{

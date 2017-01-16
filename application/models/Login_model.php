@@ -55,24 +55,24 @@
 		public function create_new_user($data){
 			$oauth_uid = $this->session->userdata('oauth_uid');
 			if($oauth_uid){
-				/*$query = $this->db->where('oauth_uid', $oauth_uid);
+				$query = $this->db->where('oauth_uid', $oauth_uid);
 				$query = $this->db->update('users', $data);
-				if($query){*/
+				if($query){
 					return "oauth_uid";
-				/*}
+				}
 				else{
 					return false;
-				}*/
+				}
 			}
 			else{
-				/*return 'non oauth_uid';
+				return 'non oauth_uid';
 				$query = $this->db->insert('users', $data);
 				if($query){
 					return true;
 				}
-				else{*/
+				else{
 					return "non oauth_uid";
-				/*}*/
+				}
 			}
 		}
 	}
