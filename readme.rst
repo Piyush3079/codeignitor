@@ -37,4 +37,4 @@ Installation
 Please see the `installation section <https://codeigniter.com/user_guide/installation/index.html>`_
 of the CodeIgniter User Guide.
 _`User Guide <https://codeigniter.com/docs>`
-Add your facebook and google plus security key to make login with facebook or googlr plus working.
+Add your facebook and google plus security key to make login with facebook or google plus working.
