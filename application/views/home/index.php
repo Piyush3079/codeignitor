@@ -4,7 +4,7 @@
 		$provider = $this->session->userdata('oauth_provider');
 	}
 	else{
-		redirect('');
+		redirect('/');
 	}
 ?>
 <!DOCTYPE html>

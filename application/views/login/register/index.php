@@ -1,5 +1,6 @@
 <?php 
-/*//Get the ipconfig details using system commond
+/*ob_start();
+//Get the ipconfig details using system commond
 system('ipconfig /all');
 $mycom=ob_get_contents();
 //Get OS info

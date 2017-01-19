@@ -284,7 +284,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						}
 				}
 				else{
-					redirect('/');
+					redirect('login/register');
 				}
 			}
 			else{
