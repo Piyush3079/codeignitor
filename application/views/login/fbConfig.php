@@ -10,7 +10,7 @@ require_once 'inc/facebook.php';
 $appId = ''; //Facebook App ID
 $appSecret = ''; // Facebook App Secret
 $redirectURL = ''; // Callback URL
-$fbPermissions = 'email';  //Required facebook permissions
+$fbPermissions = '';  //Required facebook permissions
 
 //Call Facebook API
 $facebook = new Facebook(array(

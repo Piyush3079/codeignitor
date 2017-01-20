@@ -39,7 +39,9 @@ error_reporting(0);
 ini_set('display_errors', 0);
 if(isset($data[0]['status'])){
 	$this->session->set_userdata($data[0]);
+	$this->session->unset_userdata('status');
 	if($data[0]['status'] == 1){
+		$this->session->set_userdata(array('status' => 1));
 		redirect(base_url().'home/');
 	}
 }

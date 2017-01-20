@@ -78,6 +78,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						redirect('login/pre');
 					}
 				}
+				elseif($data=="12"){
+					$data0['var'] = array('action'=>'login/pwdre', 'legend'=>'Password Recovery', 'type'=>'email', 'name'=>'email','id'=>'email1','placeholder'=>'Enter Registered Email', 'submit_name'=>'submit0', 'submit_value'=>'Submit Email', 'var'=>'<div class="alert alert-danger" role="alert"><h5><b>Alert !!! </b></h5><p>The entered otp is incorrect. Try again...</p></div>');
+					$this->load->view('login/forgot_pass', $data0);
+				}
 				elseif($data=="2" || $data=="3"){
 					if($this->session->tempdata('otp')){
 						$this->session->unset_tempdata('otp');
@@ -124,7 +128,35 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							$otp = rand(0,100000000);
 							$this->session->set_tempdata('otp', $otp, 300);
 							$this->session->set_tempdata('temp1', 'temp1', 300);
-							redirect('login/pre/1');
+							require 'PHPMailer/PHPMailerAutoload.php';
+
+							$mail = new PHPMailer;
+
+							$mail->isSMTP();                                   // Set mailer to use SMTP
+							$mail->Host = 'smtp.gmail.com';                    // Specify main and backup SMTP servers
+							$mail->SMTPAuth = true;                            // Enable SMTP authentication
+							$mail->Username = 'developer.web1997@gmail.com';          // SMTP username
+							$mail->Password = '8824083411'; // SMTP password
+							$mail->SMTPSecure = 'tls';                         // Enable TLS encryption, `ssl` also accepted
+							$mail->Port = 587;                                 // TCP port to connect to
+
+							$mail->setFrom('info@SISystem.com', 'SISystem');
+							$mail->addReplyTo('info@SISystem.com', 'SISystem');
+							$mail->addAddress($result1);   // Add a recipient
+							//$mail->addCC('cc@example.com');
+							//$mail->addBCC('bcc@example.com');
+
+							$mail->isHTML(true);  // Set email format to HTML
+							$bodyContent = '<h4>This is a system generated mail. Please do not reply.</h4>';
+							$bodyContent .= '<p>Your one time password for changing password is : '.$otp;
+							$mail->Subject = 'OTP for password recovery';
+							$mail->Body    = $bodyContent;
+
+							if(!$mail->send()) {
+							    redirect('/');
+							} else {
+							    redirect('login/pre/1');
+							}
 						}
 						else{
 							redirect('login/pre/10');
@@ -139,16 +171,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					$session = $this->session->tempdata();
 					$temp = rand(0,1000);
 					$this->session->set_tempdata('temp', $temp, 300);
-					//if($otp == $session['otp']){
+					if($otp == $session['otp']){
 						redirect('login/pre/2');
-					/*}
+					}
 					else{
-						redirect('login/pwdre/12');
-					}*/
+						redirect('login/pre/12');
+					}
 				}
 				if(isset($_POST['proceed'])){
-					$this->form_validation->set_rules('pass','Password','required');
-					$this->form_validation->set_rules('confpass','ConfirmPassword','required');
+					$this->form_validation->set_rules('pass','Password','trim|required');
+					$this->form_validation->set_rules('confpass','ConfirmPassword','trim|required|matches[pass]');
 					if($this->form_validation->run()==true){
 						$pass = $this->input->post('pass');
 						$confpass = $this->input->post('confpass');
@@ -171,11 +203,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					}
 				}
 				else{
-					redirect('login/pre/');
+					echo "error123";
+					//redirect('login/pre/');
 				}
 			}
 			else{
-				redirect('/');
+				//redirect('/');
 			}	
 		}
 
@@ -242,14 +275,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 										'gender' => $gender,
 										'dob' => $day.' '.$month.' '.$year,
 										'college' => $collage_name,
-										'status' => 1,
-										'identity' => md5(uniqid($salt, true)));
+										'status' => 1);
 							//echo '1';
 							$date_success['success'] = $this->Login_model->create_new_user($data);
 							if($date_success['success'] == false){
 								redirect('/');
 							}
 							else{
+								$this->session->set_userdata(array('status' => 1));
 								redirect('home/');
 							}
 						}
@@ -274,17 +307,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 										'college' => $collage_name,
 										'status' => 1);
 							$date_success['success'] = $this->Login_model->create_new_user($data);
-							//echo "20";
 							if($date_success['success'] == false){
 								redirect('/');
 							}
 							else{
+								$this->session->set_userdata($data);
 								redirect('home/');
 							}
 						}
 				}
 				else{
-					redirect('login/register');
+					redirect('/');
 				}
 			}
 			else{
@@ -299,8 +332,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			//echo "piyush";
 			if(isset($_POST['submit'])){
 				//echo "PIYU";
-			$this->form_validation->set_rules('email', 'Email', 'required|valid_email');
-			$this->form_validation->set_rules('password', 'Password', 'required');
+			$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
+			$this->form_validation->set_rules('password', 'Password', 'trim|required');
 			if($this->form_validation->run() == false){
 				redirect('login/error/1');
 				}

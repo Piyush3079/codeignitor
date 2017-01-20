@@ -173,7 +173,7 @@
     </div>
   </div>
 </div>
-	<?php include('header_main.php'); ?>
+	<?php $this->load->view('template/header_main'); ?>
 		<div class="container" style="margin-top:70px;">
 			<div>
 				<div class="col-md-2" style="background: #ebe2e2;border-radius: 5px;padding:0;">
@@ -294,6 +294,6 @@
 				</div>
 			</div>
 		</div>
-		<?php include('footer_main.php'); ?>
+		<?php $this->load->view('template/footer_main'); ?>
 	</body>
 </html>

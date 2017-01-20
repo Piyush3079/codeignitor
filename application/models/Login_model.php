@@ -13,7 +13,7 @@
 		public function create(){
 			$email = $this->input->post('email', true);
 			$password = $this->input->post('password', true);
-			$query = $this->db->query("SELECT * FROM users WHERE email='$email' AND password='$password'");
+			$query = $this->db->query("SELECT * FROM users WHERE email='$email' AND password='$password' AND status=1");
 			$result = $query->result();
 			if($query->num_rows() > 0){
 				return $result;
@@ -24,9 +24,9 @@
 		}
 		public function varify_email(){
 			$email = $this->input->post('email', true);
-			$query = $this->db->query("SELECT * FROM users WHERE email='$email'");
-			$result = $query->result();
-			if($query->row()){
+			$query = $this->db->query("SELECT email FROM users WHERE email='$email' AND status=1");
+			$result = $query->result_array();
+			if($query->num_rows() > 0){
 				return $result;
 			}
 			else{

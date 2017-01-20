@@ -45,7 +45,7 @@
 								array_push($total_like_array, $initial_like);
 								if($uid == $total_like_array_child[0]){
 									$like_status = 1;
-									echo '<a href="#" class="like" data-popover-like="true" data-html=true data-content="<a>click me, not to disappear</a>">Liked';
+									echo '<a href="#" class="like" style="position:relative">Liked';
 								}
 							}
 							if(!isset($like_status)){
@@ -53,6 +53,7 @@
 							}
 							$total_likes = count($total_like_array);
 							echo '</a><span style="margin-left:5px;">'.($total_likes-1).'</span>';
+							echo '<div class="arrow_box">Piyush Vijay</div>';
 							echo '<div style="display:none;" class="likes_main">'.json_encode($total_like_array).'</div>';
 							unset($like_status);
 							/****************************/
@@ -232,13 +233,8 @@
 		$(".likes_main").each(function(){
 			var comments_main = $(this).text();
 			var comment_main = JSON.parse(comments_main);
-			var data = $(this).parent().children('like').data('content');
-			console.log(data);
 			comment_main.forEach(function(obj){
-				if(obj.name != null){
-					console.log(obj.id);
-					console.log(obj.name);
-				}
+				console.log($(this).parent().children('.arrow_box').html());
 			});
 		})
 		$(".comments_main").each(function(){
@@ -252,31 +248,11 @@
 				}
 			});
 		});
-		$(".like").hover(function(){
-			var originalLeave = $.fn.popover.Constructor.prototype.leave;
-			$.fn.popover.Constructor.prototype.leave = function(obj){
-			  var self = obj instanceof this.constructor ?
-			    obj : $(obj.currentTarget)[this.type](this.getDelegateOptions()).data('bs.' + this.type)
-			  var container, timeout;
-
-			  originalLeave.call(this, obj);
-
-			  if(obj.currentTarget) {
-			    container = $(obj.currentTarget).siblings('.popover')
-			    timeout = self.timeout;
-			    container.one('mouseenter', function(){
-			      //We entered the actual popover – call off the dogs
-			      clearTimeout(timeout);
-			      //Let's monitor popover content instead
-			      container.one('mouseleave', function(){
-			        $.fn.popover.Constructor.prototype.leave.call(self, self);
-			      });
-			    })
-			  }
-			};
-
-
-			$('body').popover({ selector: '[data-popover-like]', trigger: 'click hover', placement: 'right', delay: {show: 50, hide: 400}});
+		$('.like').mouseenter(function(){
+			$(this).parent().children('.arrow_box').css('display', 'block');
+		});
+		$('.like').mouseleave(function(){
+			$(this).parent().children('.arrow_box').css('display', 'none');
 		});
 		$(".comment").hover(function(){
 			

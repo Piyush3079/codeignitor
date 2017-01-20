@@ -1,5 +1,4 @@
 <?php
-print_r($this->session->userdata());
 	error_reporting(0);
     ini_set('display_errors', 0);
     if(!isset($_SESSION)){
@@ -113,7 +112,6 @@ if($if && $status==1){
 							
 							//Render facebook profile data
 							if(!empty($userData)){
-								echo "Piyush";
 								redirect(base_url().'login/register/'.$fbUserData['oauth_uid']);
 								/*$output = '<h1>Facebook Profile Details </h1>';
 								$output .= '<img src="'.$userData['picture'].'">';
